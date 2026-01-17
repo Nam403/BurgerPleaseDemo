@@ -8,11 +8,13 @@ public class CashTable : MonoBehaviour
     [SerializeField] Car car;
     [SerializeField] List<Receiver> receivers;
     [SerializeField] MoneyStore moneyStore;
+    [SerializeField] float countDownSellTime = 0.25f;
     bool canSale = false;
+    float countDownSell;
     // Start is called before the first frame update
     void Start()
     {
-        
+        countDownSell = countDownSellTime;
     }
 
     // Update is called once per frame
@@ -31,7 +33,14 @@ public class CashTable : MonoBehaviour
         if (canSale == true) {
             if (car.IsWaitingToBuy())
             {
-                SellABox();
+                if (countDownSell <= 0) {
+                    SellABox();
+                    countDownSell = countDownSellTime;
+                }
+                else
+                {
+                    countDownSell -= Time.deltaTime;
+                }
             }
         }
     }

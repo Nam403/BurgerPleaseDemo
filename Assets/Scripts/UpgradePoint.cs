@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,13 +10,17 @@ public class UpgradePoint : MonoBehaviour
     [SerializeField] int upgradeMoneyAmount = 100;
     [SerializeField] int upgradeMoneyUnit = 10;
     [SerializeField] float distanceUpgrade = 1f;
+    [SerializeField] float countDownUpgrade = 0.1f;
     [SerializeField] List<GameObject> activeObjs = new List<GameObject>();
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] Image process;
+    public static event Action Upgrade;
     int getMoneyAmount = 0;
+    float countDown;
     // Start is called before the first frame update
     void Start()
     {
+        countDown = countDownUpgrade; 
         moneyText.text = upgradeMoneyAmount.ToString() + "$";
     }
 
@@ -23,15 +28,31 @@ public class UpgradePoint : MonoBehaviour
     void Update()
     {
         Vector3 distance = CharacterCarry.Instance.transform.position - transform.position;
-        if (distance.magnitude <= distanceUpgrade && getMoneyAmount < upgradeMoneyAmount && TradeManager.Instance.GetMoneyRemain() >= upgradeMoneyUnit)
+        if (distance.magnitude <= distanceUpgrade)
         {
-            getMoneyAmount += upgradeMoneyUnit;
-            TradeManager.Instance.UpdateMoney(-upgradeMoneyUnit);
+            if (countDown <= 0)
+            {
+                if (getMoneyAmount < upgradeMoneyAmount && TradeManager.Instance.GetMoneyRemain() >= upgradeMoneyUnit)
+                {
+                    getMoneyAmount += upgradeMoneyUnit;
+                    TradeManager.Instance.UpdateMoney(-upgradeMoneyUnit);
+                }
+                countDown = countDownUpgrade;
+            }
+            else
+            {
+                countDown -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            countDown = countDownUpgrade;
         }
         process.fillAmount = (1f * getMoneyAmount) / (1f * upgradeMoneyAmount);
         if(getMoneyAmount == upgradeMoneyAmount)
         {
             ActiveAllObjs();
+            Upgrade.Invoke();
             this.gameObject.SetActive(false);   
         }
     }
@@ -42,5 +63,14 @@ public class UpgradePoint : MonoBehaviour
         {
             activeObjs[i].SetActive(true);
         }
+        if(activeObjs.Count == 2)  // Enable for Coca
+        {
+            TradeManager.Instance.AddBoxTag("CocaBox");
+        }
+    }
+
+    public int GetUpgradeMoney() 
+    { 
+        return upgradeMoneyAmount; 
     }
 }

@@ -22,7 +22,7 @@ public class Receiver : CarriedObjContainer
             Debug.Log("Character is near by");
             if (countDownRec <= 0)
             {
-                GetFood();
+                ReceiveObject();
                 countDownRec = countDownTime;
             }
             else
@@ -36,18 +36,14 @@ public class Receiver : CarriedObjContainer
         }
     }
 
-    void GetFood()
+    void ReceiveObject()
     {
         if (CharacterCarry.Instance.HaveObjWithTag(objTag) == false)
         {
             return;
         }
-        if (IsFull())
-        {
-            return;
-        }
-        GameObject food = CharacterCarry.Instance.DropCarriedObject(objTag);
-        GetObject(food);
+        GameObject obj = CharacterCarry.Instance.DropCarriedObject(objTag);
+        GetObject(obj);
     }
     public string GetObjTag()
     {

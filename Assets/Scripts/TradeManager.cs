@@ -7,8 +7,8 @@ public class TradeManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
     public static TradeManager Instance;
-    List<string> foodBoxTag = new List<string> { "BurgerBox", "CocaBox" };
-    int moneyCount = 0;
+    List<string> foodBoxTag = new List<string> { "BurgerBox"};
+    int moneyCount;
     void Awake()
     {
         if (Instance == null)
@@ -23,6 +23,7 @@ public class TradeManager : MonoBehaviour
     }
     void Start()
     {
+        moneyCount = 50;
         moneyText.text = moneyCount.ToString() + "$";
     }
     public string GetFoodBoxTag(int index)
@@ -62,4 +63,9 @@ public class TradeManager : MonoBehaviour
     {
         return moneyCount;
     }
+
+    public void AddBoxTag(string boxTag)
+    {
+        foodBoxTag.Add(boxTag);
+    }   
 }

@@ -90,6 +90,7 @@ public class Car : MonoBehaviour
     public void BuyABox()
     {
         boxAmountRequest--;
+        requestMessage.text = boxAmountRequest.ToString() + " " + boxTagRequest;
         if (boxAmountRequest == 0)
         {
             if (state == CarState.Stopped)

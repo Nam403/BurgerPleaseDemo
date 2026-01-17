@@ -19,6 +19,7 @@ public class CarriedObjContainer : MonoBehaviour
     {
         if (carriedObjects.Count == listSizeLimit)
         {
+            Destroy(obj);
             return;
         }
         obj.transform.parent = transform;

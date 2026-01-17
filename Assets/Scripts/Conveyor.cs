@@ -30,14 +30,7 @@ public class Conveyor : MonoBehaviour
         }
         else
         {
-            if (receiver.IsFull())
-            {
-                Destroy(obj);
-            }
-            else
-            {
-                receiver.GetObject(obj);
-            }
+            receiver.GetObject(obj);
             obj = store.GetObj();
             obj.transform.position = startPoint.transform.position;
         }
