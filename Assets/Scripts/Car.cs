@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
-public class CarMovement : MonoBehaviour
+public class Car : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
     [SerializeField] GameObject waypoints;
     [SerializeField] GameObject carUI;
+    [SerializeField] TextMeshProUGUI requestMessage;
+    [SerializeField] int maxBoxRequest = 3;
     private Transform target;
     private int wavepointIndex = 0;
+    private int boxAmountRequest = 1;
+    private string boxTagRequest = "BurgerBox";
 
     enum CarState
     {
@@ -44,9 +50,7 @@ public class CarMovement : MonoBehaviour
 
         if(wavepointIndex == waypoints.transform.childCount - 1 && state == CarState.Moving) // Last waypoint before reset
         {
-            state = CarState.Stopped;
-            carUI.SetActive(true);
-            carUI.transform.position = transform.position + new Vector3(0f, 4f, 0f);
+            CreateBuyRequest();
         }
     }
 
@@ -69,6 +73,41 @@ public class CarMovement : MonoBehaviour
             carUI.SetActive(false);
             state = CarState.KeepMoving;
         }
+    }
+
+    void CreateBuyRequest()
+    {
+        state = CarState.Stopped;
+        carUI.SetActive(true);
+        carUI.transform.LookAt(Camera.main.transform);
+        carUI.transform.position = transform.position + new Vector3(0f, 4f, 0f);
+        boxAmountRequest = Random.Range(1, maxBoxRequest + 1);
+        int typeBoxRequest = Random.Range(0, TradeManager.Instance.GetSizeOfBoxTagList());
+        boxTagRequest = TradeManager.Instance.GetFoodBoxTag(typeBoxRequest);
+        requestMessage.text = boxAmountRequest.ToString() + " " + boxTagRequest;
+    }
+
+    public void BuyABox()
+    {
+        boxAmountRequest--;
+        if (boxAmountRequest == 0)
+        {
+            if (state == CarState.Stopped)
+            {
+                carUI.SetActive(false);
+                state = CarState.KeepMoving;
+            }
+        }
+    }
+
+    public bool IsWaitingToBuy()
+    {
+        return boxAmountRequest > 0;
+    }
+
+    public string GetTagRequest()
+    {
+        return boxTagRequest;
     }
 
     void ResetPath()

@@ -8,6 +8,7 @@ TagManager:
   - Coca
   - BurgerBox
   - CocaBox
+  - Money
   layers:
   - Default
   - TransparentFX
