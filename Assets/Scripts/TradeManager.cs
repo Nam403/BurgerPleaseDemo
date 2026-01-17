@@ -52,7 +52,14 @@ public class TradeManager : MonoBehaviour
     }
     public void UpdateMoney(int money)
     {
-        moneyCount += money;
-        moneyText.text = moneyCount.ToString() + "$";
+        if(moneyCount + money >= 0)
+        {
+            moneyCount += money;
+            moneyText.text = moneyCount.ToString() + "$";
+        }   
+    }
+    public int GetMoneyRemain()
+    {
+        return moneyCount;
     }
 }

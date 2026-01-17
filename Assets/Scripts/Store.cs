@@ -20,11 +20,11 @@ public class Store : MonoBehaviour
     void Update()
     {
         Vector3 distance = CharacterCarry.Instance.transform.position - foodSpawner.transform.position;
-        if(distance.magnitude <= distanceForSpawning)
+        if (distance.magnitude <= distanceForSpawning)
         {
             if (countDownSpawn <= 0)
             {
-                SpawnFood();
+                SpawnFoodToCharacter();
                 countDownSpawn = countDownTime;
             }
             else
@@ -38,7 +38,7 @@ public class Store : MonoBehaviour
         }
     }
 
-    void SpawnFood()
+    void SpawnFoodToCharacter()
     {
         if(!CharacterCarry.Instance.CanCarry())
         {
@@ -47,5 +47,11 @@ public class Store : MonoBehaviour
         GameObject food = Instantiate(foodPrefab, foodSpawner.transform.position, Quaternion.identity);
         food.transform.rotation = Quaternion.Euler(rotateVector);
         CharacterCarry.Instance.GetCarriedObject(food);
+    }
+
+    public GameObject GetObj()
+    {
+        GameObject food = Instantiate(foodPrefab, foodSpawner.transform.position, Quaternion.identity);
+        return food;
     }
 }

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375784870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7, y: 0, z: 0}
+  m_LocalPosition: {x: -2.7, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,7 +48,7 @@ MonoBehaviour:
   sizeLimitY: 8
   sizeBlockX: 1
   sizeBlockZ: 1
-  distanceReceiver: 1
+  distanceReceiver: 1.5
   countDownTime: 0.25
   objTag: Burger
 --- !u!1 &971566913
@@ -76,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971566913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.7, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -669,14 +669,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5980373128cb34da70708392c33429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodPrefab: {fileID: 4448271682931041604, guid: 820f0cfc17e903747a0e6396f9b002b4,
+    type: 3}
   boxPrefab: {fileID: 6797741973683286216, guid: 3384a2ecbd3118c4d971769c2c4e1fb2,
     type: 3}
   foodReceiver: {fileID: 375784870}
   boxDistributor: {fileID: 971566913}
-  distanceForRec_Dis: 1
-  countDownTime: 0.25
   countDownPacking: 1
-  objTag: Burger
 --- !u!1 &4851840698375951462
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class CashTable : MonoBehaviour
 {
     [SerializeField] float distanceActive = 1f;
     [SerializeField] Car car;
-    [SerializeField] Receiver[] receivers;
+    [SerializeField] List<Receiver> receivers;
     [SerializeField] MoneyStore moneyStore;
     bool canSale = false;
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class CashTable : MonoBehaviour
     void SellABox()
     {
         string tag = car.GetTagRequest();
-        for (int i = 0; i < receivers.Length; i++)
+        for (int i = 0; i < receivers.Count; i++)
         {
             if (tag == receivers[i].GetObjTag() && receivers[i].GetAmountObj() > 0)
             {
