@@ -25,7 +25,7 @@ public class Car : MonoBehaviour
     {
         UpgradePoint.CarCanMove += ResetPath;
     }
-    void OnDisble()
+    void OnDisable()
     {
         UpgradePoint.CarCanMove -= ResetPath; 
     }
