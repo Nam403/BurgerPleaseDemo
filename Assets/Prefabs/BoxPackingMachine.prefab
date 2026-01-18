@@ -49,7 +49,7 @@ MonoBehaviour:
   sizeBlockX: 1
   sizeBlockZ: 1
   distanceReceiver: 1.5
-  countDownTime: 0.25
+  countDownTime: 0.2
   objTag: Burger
 --- !u!1 &971566913
 GameObject:

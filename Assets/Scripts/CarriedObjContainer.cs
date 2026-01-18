@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -64,7 +63,9 @@ public class CarriedObjContainer : MonoBehaviour
         int yIndex = index / (sizeBlockX * sizeBlockZ);
         int xIndex = (index / sizeBlockZ) % sizeBlockX;
         int zIndex = index % sizeBlockZ;
+        #if UNITY_EDITOR
         Debug.Log("Local position: " + xIndex + ", " + yIndex + ", " + zIndex);
+        #endif
         float posX = xIndex * carriedObj.GetDistanceX() / transform.parent.localScale.x;
         float posY = yIndex * carriedObj.GetDistanceY() / transform.parent.localScale.y;
         float posZ = zIndex * carriedObj.GetDistanceZ() / transform.parent.localScale.z;

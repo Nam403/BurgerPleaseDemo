@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Profiling.Editor;
 using UnityEngine;
 
 public class BoxPackingMachine : MonoBehaviour
@@ -49,7 +46,9 @@ public class BoxPackingMachine : MonoBehaviour
             GameObject food = foodReceiver.GetComponent<Receiver>().DropObject(index);
             Destroy(food);
         }
+        #if UNITY_EDITOR
         Debug.Log("Create box!");
+        #endif
         GameObject box = Instantiate(boxPrefab, transform.position, Quaternion.identity);
         boxDistributor.GetComponent<Distributor>().GetObject(box);
     }

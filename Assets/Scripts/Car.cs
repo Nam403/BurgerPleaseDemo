@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Car : MonoBehaviour
 {
@@ -25,10 +21,18 @@ public class Car : MonoBehaviour
     }
 
     CarState state = CarState.Moving;
+    void OnEnable()
+    {
+        UpgradePoint.CarCanMove += ResetPath;
+    }
+    void OnDisble()
+    {
+        UpgradePoint.CarCanMove -= ResetPath; 
+    }
     // Start is called before the first frame update
     void Start()
     {
-        ResetPath();
+        state = CarState.Stopped;
     }
 
     // Update is called once per frame
@@ -67,7 +71,9 @@ public class Car : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Debug buy food");
+        #if UNITY_EDITOR 
+        Debug.Log("Debug buy food"); 
+        #endif
         if (state == CarState.Stopped)
         {
             carUI.SetActive(false);
@@ -79,7 +85,7 @@ public class Car : MonoBehaviour
     {
         state = CarState.Stopped;
         carUI.SetActive(true);
-        carUI.transform.LookAt(Camera.main.transform);
+        //carUI.transform.LookAt(Camera.main.transform);
         carUI.transform.position = transform.position + new Vector3(0f, 4f, 0f);
         boxAmountRequest = Random.Range(1, maxBoxRequest + 1);
         int typeBoxRequest = Random.Range(0, TradeManager.Instance.GetSizeOfBoxTagList());
@@ -117,6 +123,8 @@ public class Car : MonoBehaviour
         transform.transform.rotation = Quaternion.identity;
         target = waypoints.transform.GetChild(0);
         state = CarState.Moving;
+        Renderer rend = GetComponent<Renderer>();
+        rend.material.color = Random.ColorHSV();
         wavepointIndex = 0;
     }
 }

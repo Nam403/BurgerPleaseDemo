@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +14,7 @@ public class UpgradePoint : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] Image process;
     public static event Action Upgrade;
+    public static event Action CarCanMove;
     int getMoneyAmount = 0;
     float countDown;
     // Start is called before the first frame update
@@ -62,6 +62,10 @@ public class UpgradePoint : MonoBehaviour
         for(int i = 0; i < activeObjs.Count; i++)
         {
             activeObjs[i].SetActive(true);
+        }
+        if (activeObjs[0].GetComponent<CashTable>() != null) 
+        {
+            CarCanMove.Invoke();
         }
         if(activeObjs.Count == 2)  // Enable for Coca
         {

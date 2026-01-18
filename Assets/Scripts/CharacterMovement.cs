@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float rotationSpeed = 720f; // degrees per second
+    [SerializeField] float planeY = 0f;
     private Animator animator;
     void Start() 
     { 
@@ -18,11 +17,20 @@ public class CharacterMovement : MonoBehaviour
         {
             Vector3 mousePos = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            RaycastHit hit;
+            Plane plane = new Plane(Vector3.up, new Vector3(0, planeY, 0));
+            
             Vector3 worldPos = transform.position;
+            /*RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 worldPos = hit.point; 
+            }*/
+            if (plane.Raycast(ray, out float enter)) 
+            { 
+                worldPos = ray.GetPoint(enter);
+                #if UNITY_EDITOR
+                Debug.Log("World pos on plane: " + worldPos);
+                #endif
             }
             worldPos.y = transform.position.y;
             Vector3 forward = worldPos - transform.position;
@@ -40,6 +48,7 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+        #if UNITY_EDITOR
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("Idle")) 
         { 
@@ -47,8 +56,9 @@ public class CharacterMovement : MonoBehaviour
         } 
         else if (stateInfo.IsName("Run")) 
         { 
-            Debug.Log("Animator's state: Run"); 
+            Debug.Log("Animator's state: Run");
         }
         Debug.Log("Check isRunning: " + animator.GetBool("isRunning"));
+        #endif
     }
 }

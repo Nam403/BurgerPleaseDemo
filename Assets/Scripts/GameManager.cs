@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if (TradeManager.Instance.GetMoneyRemain() > upgradePoints[currentPointIndex].GetUpgradeMoney() && !upgradePoints[currentPointIndex].gameObject.activeSelf)
+        if (TradeManager.Instance.GetMoneyRemain() >= upgradePoints[currentPointIndex].GetUpgradeMoney() && !upgradePoints[currentPointIndex].gameObject.activeSelf)
         {
             upgradePoints[currentPointIndex].gameObject.SetActive(true);
         }

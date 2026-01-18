@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Receiver : CarriedObjContainer
@@ -19,7 +17,9 @@ public class Receiver : CarriedObjContainer
         Vector3 distance = CharacterCarry.Instance.transform.position - transform.position;
         if (distance.magnitude <= distanceReceiver)
         {
+            #if UNITY_EDITOR
             Debug.Log("Character is near by");
+            #endif
             if (countDownRec <= 0)
             {
                 ReceiveObject();

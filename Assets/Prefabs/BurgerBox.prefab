@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 7258082116868360484, guid: e13820bfece2aad4182561d623ec9812, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,8 +102,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Burger
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e13820bfece2aad4182561d623ec9812, type: 2}
+  m_sharedMaterial: {fileID: 7258082116868360484, guid: e13820bfece2aad4182561d623ec9812,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -183,7 +184,6 @@ GameObject:
   - component: {fileID: 6797741973683286220}
   - component: {fileID: 6797741973683286221}
   - component: {fileID: 6797741973683286222}
-  - component: {fileID: 6797741973683286223}
   - component: {fileID: 916717728460167100}
   m_Layer: 0
   m_Name: BurgerBox
@@ -258,19 +258,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6797741973683286223
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6797741973683286216}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &916717728460167100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,4 +273,4 @@ MonoBehaviour:
   distanceX: 0.3
   distanceY: 0.3
   distanceZ: 0.3
-  price: 10
+  price: 20
