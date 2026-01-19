@@ -53,7 +53,7 @@ public class CameraManager : MonoBehaviour
         {
             Vector3 delta = Input.mousePosition - lastMousePosition;
 
-            Vector3 move = new Vector3(-delta.x * panSpeed / 40f, 0, -delta.y * panSpeed);
+            Vector3 move = new Vector3(-delta.x * panSpeed / 10f, 0, -delta.y * panSpeed / 10f);
             cam.transform.Translate(move, Space.World);
 
             lastMousePosition = Input.mousePosition;

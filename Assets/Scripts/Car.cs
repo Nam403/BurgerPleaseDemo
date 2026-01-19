@@ -69,18 +69,6 @@ public class Car : MonoBehaviour
         target = waypoints.transform.GetChild(wavepointIndex);
     }
 
-    private void OnMouseDown()
-    {
-        #if UNITY_EDITOR 
-        Debug.Log("Debug buy food"); 
-        #endif
-        if (state == CarState.Stopped)
-        {
-            carUI.SetActive(false);
-            state = CarState.KeepMoving;
-        }
-    }
-
     void CreateBuyRequest()
     {
         state = CarState.Stopped;
@@ -89,14 +77,14 @@ public class Car : MonoBehaviour
         carUI.transform.position = transform.position + new Vector3(0f, 4f, 0f);
         boxAmountRequest = Random.Range(1, maxBoxRequest + 1);
         int typeBoxRequest = Random.Range(0, TradeManager.Instance.GetSizeOfBoxTagList());
-        boxTagRequest = TradeManager.Instance.GetFoodBoxTag(typeBoxRequest);
-        requestMessage.text = boxAmountRequest.ToString() + " " + boxTagRequest;
+        boxTagRequest = TradeManager.Instance.GetFoodBoxTag(typeBoxRequest); 
+        requestMessage.text = boxAmountRequest.ToString() + " " + boxTagRequest.Substring(0, boxTagRequest.Length - 3); // Remove string "Box" in the end of tag string
     }
 
     public void BuyABox()
     {
         boxAmountRequest--;
-        requestMessage.text = boxAmountRequest.ToString() + " " + boxTagRequest;
+        requestMessage.text = boxAmountRequest.ToString() + " " + boxTagRequest.Substring(0, boxTagRequest.Length - 3);
         if (boxAmountRequest == 0)
         {
             if (state == CarState.Stopped)
