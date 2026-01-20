@@ -8802,7 +8802,7 @@ MonoBehaviour:
   sizeBlockX: 1
   sizeBlockZ: 1
   distanceReceiver: 1
-  countDownTime: 0.2
+  countDownTime: 0.1
   objTag: CocaBox
 --- !u!1001 &726929775
 PrefabInstance:
@@ -15660,7 +15660,7 @@ MonoBehaviour:
   foodSpawner: {fileID: 1903341346}
   rotateVector: {x: 0, y: 0, z: 90}
   distanceForSpawning: 0.75
-  countDownTime: 0.2
+  countDownTime: 0.1
 --- !u!1001 &1273578094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21005,7 +21005,7 @@ MonoBehaviour:
   foodSpawner: {fileID: 778288665}
   rotateVector: {x: 0, y: 0, z: 0}
   distanceForSpawning: 0.75
-  countDownTime: 0.2
+  countDownTime: 0.1
 --- !u!1001 &1651756955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23377,7 +23377,7 @@ MonoBehaviour:
   sizeBlockX: 2
   sizeBlockZ: 2
   distanceReceiver: 1.5
-  countDownTime: 0.2
+  countDownTime: 0.1
   objTag: Coca
 --- !u!1001 &1865714333
 PrefabInstance:
@@ -26594,6 +26594,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: -2555722195601175122, guid: 9111a3bad39987c40ac7669f0a297a8c,
         type: 3}
+      propertyPath: countDownPacking
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2555722195601175122, guid: 9111a3bad39987c40ac7669f0a297a8c,
+        type: 3}
       propertyPath: distanceForRec_Dis
       value: 1
       objectReference: {fileID: 0}
@@ -26710,6 +26715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: objTag
       value: CocaBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193392459806126158, guid: 9111a3bad39987c40ac7669f0a297a8c,
+        type: 3}
+      propertyPath: countDownTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8381695626308509456, guid: 9111a3bad39987c40ac7669f0a297a8c,
         type: 3}
@@ -26844,7 +26854,7 @@ MonoBehaviour:
   sizeBlockX: 1
   sizeBlockZ: 1
   distanceReceiver: 1
-  countDownTime: 0.2
+  countDownTime: 0.1
   objTag: BurgerBox
 --- !u!1001 &2114816586
 PrefabInstance:
@@ -27334,6 +27344,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2555722195601175122, guid: 9111a3bad39987c40ac7669f0a297a8c,
+        type: 3}
+      propertyPath: countDownPacking
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 375784873, guid: 9111a3bad39987c40ac7669f0a297a8c, type: 3}
+      propertyPath: countDownTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3881831581408309023, guid: 9111a3bad39987c40ac7669f0a297a8c,
         type: 3}
       propertyPath: m_Name
@@ -27393,6 +27412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193392459806126158, guid: 9111a3bad39987c40ac7669f0a297a8c,
+        type: 3}
+      propertyPath: countDownTime
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9111a3bad39987c40ac7669f0a297a8c, type: 3}
